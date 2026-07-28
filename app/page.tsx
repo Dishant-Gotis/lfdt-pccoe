@@ -1,289 +1,381 @@
 import Link from "next/link"
-import { ArrowRight, Sparkles, Cpu, Blocks, Calendar, Zap, ArrowUpRight } from "lucide-react"
+import {
+  ArrowRight,
+  Blocks,
+  CalendarDays,
+  ChevronRight,
+  Cpu,
+  MapPinned,
+  ShieldCheck,
+  Sparkles,
+  Users2,
+  Zap,
+} from "lucide-react"
 import AsciiArtDemo from "@/components/ui/thread-light-demo"
-import { GlowCard } from "@/components/ui/spotlight-card"
+import { CreativeHoverCard } from "@/components/ui/creative-hover-card"
 
 const stats = [
-  { value: "40+", label: "Student Builders" },
-  { value: "12+", label: "Projects Shipped" },
-  { value: "6+", label: "Hackathons Hosted" },
-]
-
-const featuredProjects = [
   {
-    title: "CampuSign",
-    description: "Decentralized event ticketing and QR-based attendance verification using NFTs to prevent ticket fraud and track engagement.",
-    tags: ["Solidity", "Next.js", "ERC-721", "Ethers.js"],
-    color: "blue" as const
+    badge: "Community",
+    value: "40+",
+    label: "student builders",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    hoverImage:
+      "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "CertiLedger",
-    description: "Secure academic credentials issuance and instant verification platform on-chain, eliminating forged university certificates.",
-    tags: ["Solidity", "IPFS", "Hardhat", "React"],
-    color: "purple" as const
-  }
-]
-
-const upcomingEvents = [
-  {
-    title: "Web3 HackPCCOE",
-    date: "Sept 12-13, 2026",
-    type: "Hackathon",
-    desc: "A 36-hour student hackathon to build DeFi protocols and digital identity solutions."
+    badge: "Builds",
+    value: "12",
+    label: "project sprints",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    hoverImage:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Smart Contract Security Bootcamp",
-    date: "Oct 05, 2026",
-    type: "Workshop",
-    desc: "An intensive session on common Solidity vulnerabilities, gas optimizations, and auditing basics."
-  }
+    badge: "Events",
+    value: "6",
+    label: "hackathons hosted",
+    image:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+    hoverImage:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+  },
+]
+
+const pillars = [
+  {
+    icon: Blocks,
+    title: "Projects with real utility",
+    text: "We turn blockchain fundamentals into working products, not just slides and buzzwords.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure-by-default thinking",
+    text: "Students learn smart contract safety, wallet hygiene, and practical protocol design.",
+  },
+  {
+    icon: Zap,
+    title: "Hackathons and demos",
+    text: "Fast cycles, guided mentorship, and public showcases keep the momentum high.",
+  },
+]
+
+const highlights = [
+  {
+    title: "Decentralized identity workshop",
+    date: "September",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Student builder sprint",
+    date: "October",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Campus hackathon night",
+    date: "November",
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+  },
 ]
 
 export default function Home() {
   return (
-    <div className="text-white">
-      {/* 1. Hero Section */}
-      <section className="relative min-h-[90vh] w-full overflow-hidden px-6 pt-24 lg:px-8 flex flex-col justify-center">
-        {/* Ambient background glows and ASCII art container */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 opacity-40 mix-blend-screen">
-            <AsciiArtDemo />
+    <main className="min-h-screen text-white">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+        <div className="flex items-center gap-3">
+          <div className="grid h-11 w-11 place-items-center rounded-2xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-glow">
+            <Blocks className="h-5 w-5" />
           </div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.12),rgba(2,6,23,0.92)_55%,rgba(2,6,23,1)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,182,212,0.08),transparent_40%,rgba(217,70,239,0.1)_70%,rgba(14,165,233,0.05))]" />
+          <div>
+            <p className="font-display text-lg font-semibold tracking-wide">Lfdt Pccoe</p>
+            <p className="text-sm text-slate-300">Blockchain club of PCCOE</p>
+          </div>
         </div>
+        <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
+          <a href="#about" className="transition hover:text-white">
+            About
+          </a>
+          <a href="#projects" className="transition hover:text-white">
+            Projects
+          </a>
+          <a href="#events" className="transition hover:text-white">
+            Events
+          </a>
+          <a href="#contact" className="transition hover:text-white">
+            Contact
+          </a>
+        </nav>
+      </header>
 
-        {/* Hero Content */}
-        <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-xs sm:text-sm text-cyan-300 backdrop-blur-md">
-            <Sparkles className="h-4 w-4 text-cyan-400" />
-            Empowering the next generation of Web3 talent at PCCOE
+      <section className="relative min-h-screen w-full overflow-hidden px-6 pt-6 lg:px-8 lg:pt-8">
+        <div className="absolute inset-0">
+          <AsciiArtDemo />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),rgba(2,6,23,0.8)_48%,rgba(2,6,23,0.96)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,182,212,0.12),transparent_34%,rgba(217,70,239,0.16)_68%,rgba(14,165,233,0.1))] mix-blend-screen" />
+        <div className="relative z-10 flex min-h-screen flex-col items-center justify-center text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200 backdrop-blur-md">
+            <Sparkles className="h-4 w-4" />
+            Building the next wave of blockchain talent at PCCOE
           </div>
 
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.4em] text-fuchsia-400">
-            LFDT PCCOE Student Chapter
-          </p>
+          <div className="max-w-5xl space-y-5 px-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-fuchsia-300/90">
+              LFDT PCCOE STUDENT CHAPTER
+            </p>
+            <h1 className="font-display text-balance text-5xl font-semibold leading-[0.92] tracking-tight sm:text-6xl lg:text-8xl">
+              LFDT PCCOE STUDENT CHAPTER
+            </h1>
+            <p className="mx-auto max-w-3xl text-base leading-8 text-slate-200/90 sm:text-lg lg:text-xl">
+              A student-led blockchain community at PCCOE where builders explore smart contracts, decentralized apps,
+              and product ideas through projects, hackathons, and hands-on collaboration.
+            </p>
+            <p className="mx-auto max-w-3xl text-base leading-8 text-slate-300 sm:text-lg lg:text-xl">
+              We bring together curious students who want to learn the stack, ship real prototypes, and present work
+              that feels bold, technical, and future-facing.
+            </p>
+          </div>
 
-          <h1 className="font-display text-balance text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-            Building the <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-500 bg-clip-text text-transparent">Decentralized</span> Web
-          </h1>
-
-          <p className="mx-auto max-w-2xl text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed">
-            A developer-first blockchain community where PCCOE students learn smart contract design, decentralized systems, and ship production-ready protocols in public.
-          </p>
-
-          {/* CTAs */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
             >
               Join the club
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/10"
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/10"
             >
-              See our projects
+              See student projects
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
-        </div>
 
-        {/* Stats counter section */}
-        <div className="relative z-10 mx-auto mt-16 w-full max-w-4xl px-4">
-          <div className="rounded-2xl border border-white/5 bg-slate-950/60 p-6 backdrop-blur-lg shadow-glow">
-            <div className="grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="space-y-1">
-                  <p className="font-display text-2xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">
-                    {stat.value}
-                  </p>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+          <div className="mt-10 grid w-full max-w-5xl gap-4 px-4 sm:grid-cols-3">
+            {stats.map((stat) => (
+              <CreativeHoverCard
+                key={stat.label}
+                badge={stat.badge}
+                title={`${stat.value} ${stat.label}`}
+                hoverTitle={stat.label}
+                description="Community, execution, and visible momentum are what make the chapter feel alive."
+                imageSrc={stat.image}
+                hoverImageSrc={stat.hoverImage}
+                imageAlt={stat.label}
+                className="h-full"
+                badgeClassName="bg-cyan-400 text-slate-950"
+              />
+            ))}
+          </div>
+
+          <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-fuchsia-400/20 bg-fuchsia-400/10 px-4 py-2 text-sm text-fuchsia-100 backdrop-blur-md">
+            <Cpu className="h-4 w-4 text-cyan-300" />
+            Cyberpunk hero with the animated ASCII thread light as the backdrop.
           </div>
         </div>
       </section>
 
-      {/* 2. Overview Section */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-cyan-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-              What is LFDT?
-            </div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl">
-              A Layer for Digital Trust & Real Execution
-            </h2>
-            <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
-              The LFDT student chapter bridges the gap between Web3 theory and practice. We do not just sit through lectures; we form teams, write Solidity, deploy on testnets, and audit smart contracts.
-            </p>
-            <p className="text-slate-400 leading-relaxed text-sm">
-              Our community consists of developers, security researchers, and UI/UX designers collaborating on building real utility tools for our campus ecosystem and participating in national hackathons.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300"
-              >
-                Learn more about our mission
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+      <section id="about" className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-8 lg:py-16">
+        <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+          <CreativeHoverCard
+            badge="Chapter overview"
+            title="Learn blockchain by building work you can actually show."
+            hoverTitle="Build in public"
+            description="LFDT PCCOE Student Chapter is a student-led community for blockchain, distributed systems, and digital trust. We focus on projects, mentorship, and hackathons that move members from curiosity to execution."
+            imageSrc="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
+            hoverImageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+            imageAlt="Chapter overview"
+            className="min-h-[480px]"
+            badgeClassName="bg-fuchsia-400 text-white"
+          />
 
-          {/* Showcase of Focus Stacks */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-white/5 bg-slate-900/50 p-6 space-y-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-500/10 text-cyan-400">
-                <Cpu className="h-5 w-5" />
-              </div>
-              <h3 className="font-display font-semibold text-white">Smart Contracts</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Writing secure Solidity and Rust contracts with a focus on safety and gas efficiency.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/5 bg-slate-900/50 p-6 space-y-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-purple-500/10 text-purple-400">
-                <Blocks className="h-5 w-5" />
-              </div>
-              <h3 className="font-display font-semibold text-white">dApps</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Interfacing blockchain backends with modern frontend applications using Ethers, viem, and React.
-              </p>
-            </div>
+          <div className="grid gap-6">
+            <CreativeHoverCard
+              badge="Core values"
+              title="Openness and collaboration"
+              hoverTitle="Transparency and trust"
+              description="The chapter works best when students share openly, contribute consistently, and build with a clear sense of community ethics."
+              imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+              hoverImageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
+              imageAlt="Core values"
+              className="min-h-[240px]"
+              badgeClassName="bg-green-400 text-slate-950"
+            />
+
+            <CreativeHoverCard
+              badge="Impact metrics"
+              title="100+ students"
+              hoverTitle="25+ projects"
+              description="A visible student base, active project work, and growing participation keep the chapter moving forward."
+              imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+              hoverImageSrc="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+              imageAlt="Impact metrics"
+              className="min-h-[240px]"
+              badgeClassName="bg-blue-400 text-white"
+            />
           </div>
+        </div>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <CreativeHoverCard
+            badge="Focus areas"
+            title="Blockchain Technology"
+            hoverTitle="Distributed Systems"
+            description="We guide students through practical tracks that support team-building, technical depth, and club-wide contribution."
+            imageSrc="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80"
+            hoverImageSrc="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&w=1200&q=80"
+            imageAlt="Focus areas"
+            className="min-h-[280px]"
+            badgeClassName="bg-orange-400 text-slate-950"
+          />
+
+          <CreativeHoverCard
+            badge="Why join"
+            title="Build a real portfolio"
+            hoverTitle="Present polished work"
+            description="Learn blockchain fundamentals, work in teams, and produce public-facing outputs that make sense to recruiters and peers."
+            imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+            hoverImageSrc="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+            imageAlt="Why join"
+            className="min-h-[280px]"
+            badgeClassName="bg-fuchsia-400 text-white"
+          />
         </div>
       </section>
 
-      {/* 3. Featured Projects Section */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8 border-t border-white/5">
-        <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <section id="projects" className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-8 lg:py-16">
+        <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-fuchsia-400">Our Creations</p>
-            <h2 className="font-display mt-2 text-3xl font-bold sm:text-4xl">Featured Student Projects</h2>
+            <p className="text-sm uppercase tracking-[0.25em] text-amber-300">Projects</p>
+            <h2 className="font-display mt-2 text-3xl font-semibold sm:text-4xl">What students build here</h2>
           </div>
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-400 hover:text-cyan-300"
-          >
-            Explore all projects
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <MapPinned className="hidden h-6 w-6 text-slate-400 md:block" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {featuredProjects.map((project, idx) => (
-            <GlowCard
-              key={idx}
-              customSize={true}
-              glowColor={project.color}
-              className="p-6 h-full flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-display text-xl font-bold text-white">{project.title}</h3>
-                  <div className="p-1.5 rounded-lg bg-white/5 text-slate-400">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </div>
-                </div>
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-slate-900 border border-white/5 px-2.5 py-0.5 text-xs text-slate-400"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </GlowCard>
+        <div className="grid gap-5 md:grid-cols-3">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon
+            return (
+              <CreativeHoverCard
+                key={pillar.title}
+                badge="Project"
+                title={pillar.title}
+                hoverTitle={pillar.title}
+                description={pillar.text}
+                imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+                hoverImageSrc="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
+                imageAlt={pillar.title}
+                className="h-full"
+                badgeClassName="bg-blue-400 text-white"
+              />
+            )
+          })}
+        </div>
+      </section>
+
+      <section id="events" className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-8 lg:py-16">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">Events</p>
+            <h2 className="font-display mt-2 text-3xl font-semibold sm:text-4xl">Hackathons, meetups, and workshops</h2>
+          </div>
+          <CalendarDays className="hidden h-6 w-6 text-slate-400 md:block" />
+        </div>
+
+        <div className="grid gap-5 lg:grid-cols-3">
+          {highlights.map((item) => (
+            <CreativeHoverCard
+              key={item.title}
+              badge={item.date}
+              title={item.title}
+              hoverTitle={`${item.title} live`}
+              description="Sessions designed for rapid team formation, guided ideation, and demo-ready outputs."
+              imageSrc={item.image}
+              hoverImageSrc="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"
+              imageAlt={item.title}
+              className="h-full"
+              badgeClassName="bg-green-400 text-slate-950"
+            />
           ))}
         </div>
       </section>
 
-      {/* 4. Events Preview */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8 border-t border-white/5">
-        <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-teal-400">Get Involved</p>
-            <h2 className="font-display mt-2 text-3xl font-bold sm:text-4xl">Upcoming Sprints & Workshops</h2>
-          </div>
-          <Link
-            href="/events"
-            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-400 hover:text-cyan-300"
-          >
-            View full calendar
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {upcomingEvents.map((event, idx) => (
-            <div
-              key={idx}
-              className="relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-6 flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="rounded-full bg-teal-500/10 border border-teal-500/20 px-3 py-1 text-xs font-semibold text-teal-300">
-                    {event.type}
-                  </span>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {event.date}
-                  </div>
-                </div>
-                <h3 className="font-display text-lg font-bold text-white">{event.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{event.desc}</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-white/5">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 hover:underline"
-                >
-                  Register to attend
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+      <section id="contact" className="mx-auto w-full max-w-7xl px-6 py-8 pb-20 lg:px-8 lg:py-16">
+        <CreativeHoverCard
+          badge="Join us"
+          title="Want to build with us this semester?"
+          hoverTitle="Start building now"
+          description="Bring your interest in blockchain, design, backend, product, or community work. We’ll help you find a project and a team."
+          imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+          hoverImageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+          imageAlt="Join us"
+          className="min-h-[420px]"
+          badgeClassName="bg-cyan-400 text-slate-950"
+        />
       </section>
 
-      {/* 5. CTA Join Us Section */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-950 p-8 sm:p-12 md:p-16 text-center space-y-6">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1),transparent_60%)]" />
-          <div className="mx-auto max-w-2xl space-y-4">
-            <Zap className="mx-auto h-8 w-8 text-cyan-400" />
-            <h2 className="font-display text-3xl font-extrabold sm:text-4xl text-white">
-              Ready to Write Web3 Code?
-            </h2>
-            <p className="text-slate-300 text-sm sm:text-base">
-              Whether you are an expert programmer or just started learning Web3, LFDT is the perfect place to build projects, find team members, and learn by shipping.
-            </p>
-            <div className="pt-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-              >
-                Join LFDT PCCOE
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+      <footer className="mx-auto w-full max-w-7xl px-6 pb-10 lg:px-8">
+        <div className="relative overflow-hidden border-t border-cyan-400/20 pt-8">
+          <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:items-start">
+            <div className="space-y-4">
+              <p className="font-display text-2xl font-semibold tracking-wide text-white">LFDT PCCOE</p>
+              <p className="max-w-xl text-sm leading-7 text-slate-300">
+                The student chapter for blockchain builders at PCCOE, focused on projects, hackathons, and practical
+                learning. We design, build, test, and ship in public.
+              </p>
+            </div>
+
+            <div className="space-y-4 text-sm text-slate-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-fuchsia-300">Navigate</p>
+              <div className="flex flex-col gap-3">
+                <a href="#about" className="transition hover:text-white">
+                  About
+                </a>
+                <a href="#projects" className="transition hover:text-white">
+                  Projects
+                </a>
+                <a href="#events" className="transition hover:text-white">
+                  Events
+                </a>
+                <a href="#contact" className="transition hover:text-white">
+                  Contact
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-4 text-sm text-slate-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">Connect</p>
+              <div className="flex flex-col gap-3">
+                <a href="mailto:hello@lfdtpccoe.in" className="transition hover:text-white">
+                  hello@lfdtpccoe.in
+                </a>
+                <a href="#" className="transition hover:text-white">
+                  Instagram
+                </a>
+                <a href="#" className="transition hover:text-white">
+                  LinkedIn
+                </a>
+                <a href="#" className="transition hover:text-white">
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
+
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.25em] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 LFDT PCCOE Student Chapter</p>
+            <p>Blockchain club of PCCOE</p>
+          </div>
         </div>
-      </section>
-    </div>
+      </footer>
+    </main>
   )
 }

@@ -1,22 +1,20 @@
 import type { Metadata } from "next"
-import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+import { Manrope, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-bricolage-grotesque",
+  variable: "--font-manrope",
 })
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-space-grotesk",
 })
 
 export const metadata: Metadata = {
   title: "Lfdt Pccoe | Blockchain Club",
-  description: "A modern website for Lfdt Pccoe, the blockchain club of PCCOE.",
+  description: "A modern landing page for Lfdt Pccoe, the blockchain club of PCCOE.",
 }
 
 export default function RootLayout({
@@ -26,14 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.variable} ${bricolageGrotesque.variable} antialiased flex flex-col min-h-screen`}>
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} antialiased`}>
+        {children}
       </body>
     </html>
   )
 }
-

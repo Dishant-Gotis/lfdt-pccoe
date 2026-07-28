@@ -68,7 +68,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
     const baseStyles: React.CSSProperties & Record<string, string | number> = {
       '--base': base,
       '--spread': spread,
-      '--radius': '24',
+      '--radius': '14',
       '--border': '3',
       '--backdrop': 'hsl(0 0% 60% / 0.12)',
       '--backup-border': 'var(--backdrop)',
