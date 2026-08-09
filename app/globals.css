@@ -38,7 +38,7 @@ body {
     radial-gradient(circle at top right, rgba(251, 191, 36, 0.12), transparent 30%),
     linear-gradient(180deg, #020617 0%, #08111f 42%, #040814 100%);
   color: hsl(var(--foreground));
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
 }
 
 a {
@@ -52,7 +52,30 @@ a {
 }
 
 .font-display {
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-bricolage-grotesque), sans-serif;
+}
+
+.font-retro {
+  font-family: var(--font-retro), monospace;
+}
+
+.text-glow-green {
+  text-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+}
+
+.crt-scanlines {
+  position: relative;
+}
+
+.crt-scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .glass {
