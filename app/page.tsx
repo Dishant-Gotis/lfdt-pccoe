@@ -3,6 +3,7 @@ import { Calendar, Zap, ArrowUpRight } from "lucide-react"
 import { GlowCard } from "@/components/ui/spotlight-card"
 import { PixelBlock, PixelChain, PixelToken } from "@/components/ui/pixel-art"
 import AsciiArtDemo from "@/components/ui/thread-light-demo"
+import HeroBackground from "@/components/hero-background"
 
 const featuredProjects = [
   {
@@ -45,14 +46,7 @@ export default function Home() {
     <div className="text-white">
       {/* 1. Hero Section (Direct Vertical Scroll) */}
       <section className="relative min-h-[95vh] w-full overflow-hidden px-6 pt-24 lg:px-8 flex flex-col justify-center border-b border-white/5">
-        {/* Ambient background glows and ASCII art container */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 opacity-30 mix-blend-screen">
-            <AsciiArtDemo />
-          </div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),rgba(2,6,23,0.95)_55%,rgba(2,6,23,1)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,182,212,0.06),transparent_40%,rgba(217,70,239,0.08)_70%,rgba(14,165,233,0.04))]" />
-        </div>
+        <HeroBackground />
 
         {/* Hero Content */}
         <div className="relative z-10 mx-auto max-w-4xl text-center space-y-6">
