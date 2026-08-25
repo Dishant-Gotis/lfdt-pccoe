@@ -11,13 +11,25 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+export const isFirebaseConfigured = !!firebaseConfig.apiKey;
 
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+let app;
+let auth: any;
+let db: any;
 
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+if (isFirebaseConfigured) {
+  app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+  auth = getAuth(app);
+  db = getFirestore(app);
+} else {
+  // Safe fallbacks for build/server environment
+  app = undefined;
+  auth = {
+    currentUser: null,
+  } as any;
+  db = {} as any;
+}
 
+export { app, auth, db };
 export default app;
+
